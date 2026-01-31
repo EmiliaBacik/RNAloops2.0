@@ -1,4 +1,4 @@
-#Filters:;pdb=1asy,7k16,4wqf,5nwy,6xij
+# Filters:;pdb=1asy,7k16,4wqf,5nwy,6xij
 Loop type;Home structure (PDB id);Sequence;DB notation
 3-way junction;7k16;gGCAAGGUACGGC-GCCGUAGGGG-CCCCCC;((.....((((((-))))))((((-))))))
 3-way junction;5nwy;CCCUGG-CCGAUAGUGAACCAGUACC-GGGAAAGG;((..((-))...............((-))....))
