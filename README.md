@@ -52,4 +52,43 @@ To run all implemented tests while being in project directory use:
 
 python -m unittest discover ./tests/
 
+# Topology Search
+
+Mechanism for searching n-way junction RNA with a specific topology in the **RNAloops** application. These scripts process a CSV file containing the results of RNA loop searches and enable the identification of loops with a specific topology in the **RNAloops** application.
+
+## Examples of RNA multiloop topologies
+
+The table below shows examples of topologies and the corresponding secondary structures of RNA multi-loops.
+
+| PDB ID | Secondary Structure | Multiloop Type | Topology |
+|--------|-------------------|----------------|----------|
+| 5WFS   | (.(((-)))...(((-)))..) | 3-way junction | 1-3-2 |
+| 1BAU   | (...[-[..)-(...]-]..)  | 4-way junction | 3-2-3-2 |
+| 4P6F   | ([-[...(-(.]-])-))     | 5-way junction | 0-3-1-0-0 |
+
+## Components
+
+- **filter.py** – Python script that searches the input dataset for loops with a user-defined topology in the `"X-X-X"` format (where `"X"` represents the number of unpaired nucleotides in a given single-stranded fragment of the loop).
+
+- **process.sh** – Bash script that supplements the filtered loops with **resolution** and **experimental method** information obtained from the **PDB** repository.
+
+- **select.py** – Python script that groups the provided data based on the secondary structure (represented in **extended dot-bracket notation**) and selects a representative loop of the highest quality for each unique secondary structure.
+
+## Usage example
+
+Run the following commands in order to process RNA loop search results:
+
+```bash
+python3 filter.py -vtopol="4-1-5-2" < Search_results.csv > filter.csv
+```
+Filters loops with the specified topology ("4-1-5-2") from the input CSV file.
+```bash
+./process.sh  filter.csv > process.csv
+```
+Adds additional information from the PDB (resolution and experimental method) to the filtered loops.
+```bash
+python3 select.py < process.csv > select_output.csv
+```
+Selects representative loops for each unique secondary structure, producing the final CSV file.
+
 
