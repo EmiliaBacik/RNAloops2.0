@@ -115,7 +115,7 @@ def download_PDB_structures(pdb_ID):
     if not os.path.exists(pdb_data_folder):
         os.makedirs(pdb_data_folder)
     pdb_ID = pdb_ID.lower()
-    print(f"Checking {pdb_ID}.cif")
+    #print(f"Checking {pdb_ID}.cif")
     if not is_non_zero_file(pdb_data_folder / (pdb_ID + ".cif")):
         url = f"https://files.rcsb.org/download/{pdb_ID}.cif"
         target = pdb_data_folder / f"{pdb_ID}.cif"
